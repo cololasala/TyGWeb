@@ -5,9 +5,10 @@ var app = new Vue({
 		showElements: false,
 		showElementsTwo: false,
 		elements: null,
-		elementsTwo: null,
-		elementsThree: null,
+		elementsTwo: [],				// aca guardo las descripciones
+		elementsTwoUrls: [],			// aca guardo las urls de las fotos
 		phrasesArray:[{phrase:'Hola a todos :D', style:1}, {phrase:'Pagina unica en el mundo', style:2} ,{phrase:'Esto es muy divertido!!', style:3}],
+		elementsThree: null,
 	},
 
 	methods: {
@@ -33,13 +34,16 @@ var app = new Vue({
 			.then(response => this.elements = response.data.bpi);
 
 		axios.get("https://opencollective.com/sustainoss/events.json?limit=10&offset=0") // Page is called Open Collective Docs. Open Collective is an online funding platform for open and transparent communities. 
-			.then(response => this.elementsTwo = response.data.name);					 //	We provide the tools to raise and share your finances in full transparency.
-			
-
-		axios.get("https://cat-fact.herokuapp.com/facts/random?animal_type=cat&amount=4")
-			.then(response => this.elementsThree = response.data.text);
-
-
-
+			.then(response => {
+								console.log(response.data);
+								this.elementsThree = response.data
+							});
+		axios.get("https://api.unsplash.com/users/randomsky/photos/?client_id=-qqFujEaGsaptFY6f3YY3bHiEFvLJ3PtWfSUi39NH6Q") // This page is called unsplash, it's used to upload photos, is very similiar to instagram.
+			.then(response => { 
+								for(var i = 4; i >= 0; i--) {								// aca solo quiero 5 imagenes y sus descripciones
+									this.elementsTwo.push(response.data[i].description);  
+									this.elementsTwoUrls.push(response.data[i].urls.raw);
+								}
+							});
 	}
 })

@@ -16,7 +16,7 @@
 				<a @click="api1()">Link API 1</a>
 			</div>
 			<div>
-				<a @click="api2()">Link API 2</a>
+				<a @click="api2()">Unsplash</a>
 			</div>
 		</nav>
 	</aside>
@@ -36,12 +36,11 @@
 				</ul>
 			</article>
 			<article v-if="showElementsTwo">
-				<h3>Information</h3>
-				<ul>
-					<li v-for="element in elements">
-						{{element.description}}
-					</li>
-				</ul>
+				<h2>Unsplash Photos and their descriptions</h2>
+				<div v-for="(element,index) in elementsTwo">
+					<img id="unimg" :src="elementsTwoUrls[index]">
+					<p>{{ element }}</p>
+				</div>
 			</article>
 	</section>
 	<footer>

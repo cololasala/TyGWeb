@@ -75,3 +75,10 @@ section article {
 	text-shadow: 2px 2px 2px black;
 	font-size: 30px;
 }
+
+#unimg {
+	height: 50px;
+	width: 50px;
+	margin: 20px;
+	display: inline-block;
+}
