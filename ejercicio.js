@@ -6,6 +6,7 @@ var app = new Vue({
 		showElementsTwo: false,
 		elements: null,
 		elementsTwo: null,
+		elementsThree: null,
 		phrasesArray:[{phrase:'Hola a todos :D', style:1}, {phrase:'Pagina unica en el mundo', style:2} ,{phrase:'Esto es muy divertido!!', style:3}],
 	},
 
@@ -30,6 +31,15 @@ var app = new Vue({
 	mounted() {
 		axios.get("https://api.coindesk.com/v1/bpi/currentprice.json")
 			.then(response => this.elements = response.data.bpi);
+
+		axios.get("https://opencollective.com/sustainoss/events.json?limit=10&offset=0") // Page is called Open Collective Docs. Open Collective is an online funding platform for open and transparent communities. 
+			.then(response => this.elementsTwo = response.data.name);					 //	We provide the tools to raise and share your finances in full transparency.
+			
+
+		axios.get("https://cat-fact.herokuapp.com/facts/random?animal_type=cat&amount=4")
+			.then(response => this.elementsThree = response.data.text);
+
+
 
 	}
 })
