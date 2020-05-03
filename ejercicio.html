@@ -5,6 +5,7 @@
 	<link rel="stylesheet" type="text/css" href="ejercicio.css">
 </head>
 <body>
+	<div id="app">
 	<header>
 		<h1><span><img src="https://previews.123rf.com/images/jemastock/jemastock1704/jemastock170411488/76739365-destornillador-y-llave-de-reparaci%C3%B3n-herramienta-icono-imagen-vector-ilustraci%C3%B3n-dise%C3%B1o.jpg"></span>TP Nro 1-Lasala, Luciano
 		</h1>
@@ -12,23 +13,40 @@
 	<aside>
 		<nav>
 			<div>
-				<a href="">Link API 1</a>
+				<a @click="api1()">Link API 1</a>
 			</div>
 			<div>
-				<a href="">Link API 2</a>
+				<a @click="api2()">Unsplash</a>
 			</div>
 		</nav>
 	</aside>
 	<section id="contenido">
-		<article>
-			<p>Al abrir la página de inicio, el cuerpo principal mostrará de manera aleatoria una frase de entre tres elegidas por el alumno (puede resolverse mediante PHP o Javascript indistintamente) con la aplicación de estilos CSS3 a las letras para darle diferentes tipos de sombras a cada una de las frases. Por otro lado deberá incluir mediante tags HTML5 un video de presentación del alumno.
-			</p>
-		</article>
+			<br>
+			<article v-if="!showElements && !showElementsTwo">
+				<p :class="{'shadowOne' : showPhrase.style === 1, 'shadowTwo' : showPhrase.style === 2, 
+				'shadowThree' : showPhrase.style === 3 }">{{ showPhrase.phrase }}</p>
+				<iframe width="560" height="315" src="https://www.youtube.com/embed/2ux6PDWlI6E" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+			</article>
+			<article v-if="showElements">
+				<h3>BitCoin Info</h3>
+				<ul>
+					<li v-for="element in elements">
+						{{element.description}}
+					</li>
+				</ul>
+			</article>
+			<article v-if="showElementsTwo">
+				<h2>Unsplash Photos and their descriptions</h2>
+				<div v-for="(element,index) in elementsTwo">
+					<img id="unimg" :src="elementsTwoUrls[index]">
+					<p>{{ element }}</p>
+				</div>
+			</article>
 	</section>
 	<footer>
 		<div>TyGWeb Año: 2020</div>
 	</footer>
-	
+	</div>
 	
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>

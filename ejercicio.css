@@ -52,3 +52,33 @@ footer {
 	border-style: solid;
   	border-top-width: thin;
 }
+
+section article {
+	text-align: center;
+	list-style: inside;
+}
+
+.shadowOne {
+	color: red;
+	text-shadow: 0 0 3px #FF0000;
+	font-size: 30px;
+}
+
+.shadowTwo {
+	color: blue;
+	text-shadow: 2px 2px 4px #000000;
+	font-size: 30px;
+}
+
+.shadowThree {
+	color: orange;
+	text-shadow: 2px 2px 2px black;
+	font-size: 30px;
+}
+
+#unimg {
+	height: 50px;
+	width: 50px;
+	margin: 20px;
+	display: inline-block;
+}
