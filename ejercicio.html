@@ -6,7 +6,6 @@
 </head>
 <body>
 	<div id="app">
-		<p>{{ message }}</p>
 	<header>
 		<h1><span><img src="https://previews.123rf.com/images/jemastock/jemastock1704/jemastock170411488/76739365-destornillador-y-llave-de-reparaci%C3%B3n-herramienta-icono-imagen-vector-ilustraci%C3%B3n-dise%C3%B1o.jpg"></span>TP Nro 1-Lasala, Luciano
 		</h1>
@@ -17,19 +16,33 @@
 				<a @click="api1()">Link API 1</a>
 			</div>
 			<div>
-				<a>Link API 2</a>
+				<a @click="api2()">Link API 2</a>
 			</div>
 		</nav>
 	</aside>
 	<section id="contenido">
-		<article>
-			<h3>BitCoin Info</h3>
-			<ul>
-				<li v-for="element in elements" >
-					{{element.description}}
-				</li>
-			</ul>
-		</article>
+			<br>
+			<article v-if="!showElements && !showElementsTwo">
+				<p :class="{'shadowOne' : showPhrase.style === 1, 'shadowTwo' : showPhrase.style === 2, 
+				'shadowThree' : showPhrase.style === 3 }">{{ showPhrase.phrase }}</p>
+				<iframe width="560" height="315" src="https://www.youtube.com/embed/2ux6PDWlI6E" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+			</article>
+			<article v-if="showElements">
+				<h3>BitCoin Info</h3>
+				<ul>
+					<li v-for="element in elements">
+						{{element.description}}
+					</li>
+				</ul>
+			</article>
+			<article v-if="showElementsTwo">
+				<h3>Information</h3>
+				<ul>
+					<li v-for="element in elements">
+						{{element.description}}
+					</li>
+				</ul>
+			</article>
 	</section>
 	<footer>
 		<div>TyGWeb Año: 2020</div>
