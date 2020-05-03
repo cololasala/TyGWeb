@@ -13,7 +13,7 @@
 	<aside>
 		<nav>
 			<div>
-				<a @click="api1()">Link API 1</a>
+				<a @click="api1()">Open Collective Docs</a>
 			</div>
 			<div>
 				<a @click="api2()">Unsplash</a>
@@ -25,15 +25,33 @@
 			<article v-if="!showElements && !showElementsTwo">
 				<p :class="{'shadowOne' : showPhrase.style === 1, 'shadowTwo' : showPhrase.style === 2, 
 				'shadowThree' : showPhrase.style === 3 }">{{ showPhrase.phrase }}</p>
+				<br>
 				<iframe width="560" height="315" src="https://www.youtube.com/embed/2ux6PDWlI6E" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 			</article>
 			<article v-if="showElements">
-				<h3>BitCoin Info</h3>
-				<ul>
+				<h3>Event's Information</h3>
+		<!--		<ul>
 					<li v-for="element in elements">
 						{{element.description}}
 					</li>
-				</ul>
+				</ul> -->
+				<br>
+				<table border="1px">
+					<tr>
+						<th>Name</th>
+						<th>Description</th>
+						<th>Location</th>
+						<th>Ends At</th>
+						<th>Timezone</th>
+					</tr>
+					<tr v-for="element in elements">
+						<td>{{ element.name }}</td>
+						<td>{{ element.description }}</td>
+						<td>{{ element.location.address }}</td>
+						<td>{{ element.endsAt }}</td>
+						<td>{{ element.timezone }}</td>
+					</tr>
+				</table>
 			</article>
 			<article v-if="showElementsTwo">
 				<h2>Unsplash Photos and their descriptions</h2>

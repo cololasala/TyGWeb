@@ -30,13 +30,10 @@ var app = new Vue({
 	},
 
 	mounted() {
-		axios.get("https://api.coindesk.com/v1/bpi/currentprice.json")
-			.then(response => this.elements = response.data.bpi);
 
 		axios.get("https://opencollective.com/sustainoss/events.json?limit=10&offset=0") // Page is called Open Collective Docs. Open Collective is an online funding platform for open and transparent communities. 
-			.then(response => {
-								console.log(response.data);
-								this.elementsThree = response.data
+			.then(response => {															// se necesita tener la extension Enable Cors, averiguar si no se puede hacer de otra forma
+								this.elements = response.data;
 							});
 		axios.get("https://api.unsplash.com/users/randomsky/photos/?client_id=-qqFujEaGsaptFY6f3YY3bHiEFvLJ3PtWfSUi39NH6Q") // This page is called unsplash, it's used to upload photos, is very similiar to instagram.
 			.then(response => { 
