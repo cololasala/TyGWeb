@@ -26,15 +26,14 @@ var app = new Vue({
 	},
 
 	created() {
-		this.showPhrase = this.phrasesArray[Math.floor(Math.random() * 3)]; // toma valores entre 0 y 1, luego multiplica por 3 y luego toma la parte entera 
+		this.showPhrase = this.phrasesArray[Math.floor(Math.random() * 3)]; // toma valores entre 0 y 1(exclusivo), luego multiplica por 3 y luego toma la parte entera 
 	},
 
 	mounted() {
+		axios.get("https://opencollective.com/sustainoss/events.json?limit=10&offset=0") // Page is called Open Collective Docs. Open Collective is an online funding platform for open and transparent communities.  // se necesita tener la extension Enable Cors, averiguar si no se puede hacer de otra forma
+ 			.then(response => {this.elements = response.data});																	
+			
 
-		axios.get("https://opencollective.com/sustainoss/events.json?limit=10&offset=0") // Page is called Open Collective Docs. Open Collective is an online funding platform for open and transparent communities. 
-			.then(response => {															// se necesita tener la extension Enable Cors, averiguar si no se puede hacer de otra forma
-								this.elements = response.data;
-							});
 		axios.get("https://api.unsplash.com/users/randomsky/photos/?client_id=-qqFujEaGsaptFY6f3YY3bHiEFvLJ3PtWfSUi39NH6Q") // This page is called unsplash, it's used to upload photos, is very similiar to instagram.
 			.then(response => { 
 								for(var i = 4; i >= 0; i--) {								// aca solo quiero 5 imagenes y sus descripciones
@@ -42,5 +41,16 @@ var app = new Vue({
 									this.elementsTwoUrls.push(response.data[i].urls.raw);
 								}
 							});
+
+		axios.get("https://discordapp.com/api/guilds/140805434654195712/embed.json") // muestra un json de un channel de alguien...
+			.then(response => {
+				console.log(response.data);
+			})
+
+		axios.get("https://discord.com/api/guilds/708920234945282118/widget.json") // muestra un json de mi guild
+			.then(response => {
+				this.elementsThree = response.data;
+				console.log(response.data);
+			})
 	}
 })
