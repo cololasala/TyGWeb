@@ -36,13 +36,13 @@ var app = new Vue({
 
 		axios.get("https://api.unsplash.com/users/randomsky/photos/?client_id=-qqFujEaGsaptFY6f3YY3bHiEFvLJ3PtWfSUi39NH6Q") // This page is called unsplash, it's used to upload photos, is very similiar to instagram.
 			.then(response => { 
-								for(var i = 4; i >= 0; i--) {								// aca solo quiero 5 imagenes y sus descripciones
+								for(var i = 3; i >= 0; i--) {								// aca solo quiero 4 imagenes y sus descripciones
 									this.elementsTwo.push(response.data[i].description);  
 									this.elementsTwoUrls.push(response.data[i].urls.raw);
 								}
 							});
 
-		axios.get("https://discordapp.com/api/guilds/140805434654195712/embed.json") // muestra un json de un channel de alguien...
+		axios.get("https://discordapp.com/api/guilds/140805434654195712/embed.json")
 			.then(response => {
 				console.log(response.data);
 			})

@@ -29,7 +29,7 @@
 				<iframe width="560" height="315" src="https://www.youtube.com/embed/2ux6PDWlI6E" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 			</article>
 			<article v-if="showElements">
-				<h3>Discord server</h3>
+				<h2>Discord server</h2>
 				<br>
 				<table border="1">
 					<tr>
@@ -49,10 +49,25 @@
 			</article>
 			<article v-if="showElementsTwo">
 				<h2>Unsplash Photos and their descriptions</h2>
-				<div v-for="(element,index) in elementsTwo">
-					<img id="unimg" :src="elementsTwoUrls[index]">
-					<p>{{ element }}</p>
-				</div>
+				<br>
+			<table border="1">
+				<tr>
+					<th>
+						Photo
+					</th>
+					<th>
+						Description
+					</th>
+				</tr>
+				<tr v-for = "(element,index) in elementsTwo">
+					<td>
+						<img id="unimg" :src="elementsTwoUrls[index]">
+					</td>
+					<td>
+						{{ element }}
+					</td>
+				</tr>
+			</table>
 			</article>
 	</section>
 	<footer>
