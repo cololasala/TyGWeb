@@ -5,8 +5,8 @@ var app = new Vue({
 		showElements: false,
 		showElementsTwo: false,
 		elements: null,
-		elementsTwo: [],				// aca guardo las descripciones
-		elementsTwoUrls: [],			// aca guardo las urls de las fotos
+		countries: [],				
+		elementsTwoUrls: [],			
 		phrasesArray:[{phrase:'Hola a todos :D', style:1}, {phrase:'Pagina unica en el mundo', style:2} ,{phrase:'Esto es muy divertido!!', style:3}],
 		elementsThree: null,
 	},
@@ -30,27 +30,21 @@ var app = new Vue({
 	},
 
 	mounted() {
-		axios.get("https://opencollective.com/sustainoss/events.json?limit=10&offset=0") // Page is called Open Collective Docs. Open Collective is an online funding platform for open and transparent communities.  // se necesita tener la extension Enable Cors, averiguar si no se puede hacer de otra forma
- 			.then(response => {this.elements = response.data});																	
-			
 
-		axios.get("https://api.unsplash.com/users/randomsky/photos/?client_id=-qqFujEaGsaptFY6f3YY3bHiEFvLJ3PtWfSUi39NH6Q") // This page is called unsplash, it's used to upload photos, is very similiar to instagram.
-			.then(response => { 
-								for(var i = 3; i >= 0; i--) {								// aca solo quiero 4 imagenes y sus descripciones
-									this.elementsTwo.push(response.data[i].description);  
-									this.elementsTwoUrls.push(response.data[i].urls.raw);
-								}
-							});
-
-		axios.get("https://discordapp.com/api/guilds/140805434654195712/embed.json")
+		axios.get("https://holidayapi.com/v1/countries?pretty&key=1afd450e-a844-4d3f-816a-42a22d11747f")
 			.then(response => {
-				console.log(response.data);
+				
+				for(i=0; i < 39; i++) {
+					this.countries.push({
+						name: response.data.countries[i].name,
+						flag: response.data.countries[i].flag,
+						code: response.data.countries[i].code,
+					});
+				}
+
 			})
 
-		axios.get("https://discord.com/api/guilds/708920234945282118/widget.json") // muestra un json de mi guild
-			.then(response => {
-				this.elementsThree = response.data;
-				console.log(response.data);
-			})
+
+
 	}
 })

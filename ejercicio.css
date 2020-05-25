@@ -25,14 +25,14 @@ header h1 {
 }
 
 #contenido {
-	height: 600px;
+	height: 700px;
 	width: 100%;
 	background-color: #ADD8E6;
 	border: solid black;
 }
 
 aside {
-	height: 600px;
+	height: 700px;
 	width:250px;
 	background-color: #8FBC8F;
 	border: solid black;
@@ -83,6 +83,8 @@ section article {
 	display: inline-block;
 }
 
-table {
+table, th, td {
 	margin: 0 auto;
+	border: 2px solid green;
 }
+

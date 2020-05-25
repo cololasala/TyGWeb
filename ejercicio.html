@@ -13,10 +13,10 @@
 	<aside>
 		<nav>
 			<div>
-				<a @click="api1()">Discord</a>
+				<a @click="api1()">nnn</a>
 			</div>
 			<div>
-				<a @click="api2()">Unsplash</a>
+				<a @click="api2()">Holiday API</a>
 			</div>
 		</nav>
 	</aside>
@@ -29,44 +29,15 @@
 				<iframe width="560" height="315" src="https://www.youtube.com/embed/2ux6PDWlI6E" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 			</article>
 			<article v-if="showElements">
-				<h2>Discord server</h2>
-				<br>
-				<table border="1">
-					<tr>
-						<th>Id</th>
-						<th>Name</th>
-						<th>Invitation</th>
-						<th>Presence Count</th>
-
-					</tr>
-					<tr>
-						<td>{{ elementsThree.id}}</td>
-						<td>{{ elementsThree.name}}</td>
-						<td>{{ elementsThree.instant_invite}}</td>
-						<td>{{ elementsThree.presence_count}}</td>
-					</tr>
-				</table>
+				
 			</article>
 			<article v-if="showElementsTwo">
-				<h2>Unsplash Photos and their descriptions</h2>
-				<br>
-			<table border="1">
-				<tr>
-					<th>
-						Photo
-					</th>
-					<th>
-						Description
-					</th>
-				</tr>
-				<tr v-for = "(element,index) in elementsTwo">
-					<td>
-						<img id="unimg" :src="elementsTwoUrls[index]">
-					</td>
-					<td>
-						{{ element }}
-					</td>
-				</tr>
+				<h2>Countries</h2>
+				<div v-for="country in countries" style="display: inline-block;">
+					<img id="unimg" :src="country.flag">
+					<p>{{ country.code }}</p>
+					<p>{{ country.name }}</p>
+				</div>
 			</table>
 			</article>
 	</section>
