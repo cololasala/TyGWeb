@@ -29,11 +29,7 @@ var app = new Vue({
 		this.showPhrase = this.phrasesArray[Math.floor(Math.random() * 3)]; // toma valores entre 0 y 1(exclusivo), luego multiplica por 3 y luego toma la parte entera 
 	},
 
-	mounted() {
-		axios.get("https://opencollective.com/sustainoss/events.json?limit=10&offset=0") // Page is called Open Collective Docs. Open Collective is an online funding platform for open and transparent communities.  // se necesita tener la extension Enable Cors, averiguar si no se puede hacer de otra forma
- 			.then(response => {this.elements = response.data});																	
-			
-
+	mounted() {																
 		axios.get("https://api.unsplash.com/users/randomsky/photos/?client_id=-qqFujEaGsaptFY6f3YY3bHiEFvLJ3PtWfSUi39NH6Q") // This page is called unsplash, it's used to upload photos, is very similiar to instagram.
 			.then(response => { 
 								for(var i = 3; i >= 0; i--) {								// aca solo quiero 4 imagenes y sus descripciones

@@ -29,7 +29,7 @@
 				<iframe width="560" height="315" src="https://www.youtube.com/embed/2ux6PDWlI6E" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 			</article>
 			<article v-if="showElements">
-				<h2>Discord server</h2>
+				<h2>Discord server information</h2>
 				<br>
 				<table border="1">
 					<tr>
@@ -37,15 +37,33 @@
 						<th>Name</th>
 						<th>Invitation</th>
 						<th>Presence Count</th>
-
+						<th>Channel</th>
 					</tr>
 					<tr>
 						<td>{{ elementsThree.id}}</td>
 						<td>{{ elementsThree.name}}</td>
 						<td>{{ elementsThree.instant_invite}}</td>
 						<td>{{ elementsThree.presence_count}}</td>
+						<td>{{ elementsThree.channels[0].name }}</td>
 					</tr>
 				</table>
+				<br>
+				<h3>Members Online</h3>
+				<table v-if="elementsThree.members" border="1">
+					<tr>
+						<th>Id</th>
+						<th>Username</th>
+						<th>Avatar</th>
+						<th>Status</th>
+					</tr>
+					<tr v-for= "element in elementsThree.members">
+						<td>{{ element.id}}</td>
+						<td>{{ element.username}}</td>
+						<td><img :src="element.avatar_url"></td>
+						<td>{{ element.status }}</td>
+					</tr>
+				</table>
+				<p v-if="!elementsThree.members"> There are no members online at this moment</p>
 			</article>
 			<article v-if="showElementsTwo">
 				<h2>Unsplash Photos and their descriptions</h2>
