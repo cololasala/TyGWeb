@@ -1,3 +1,4 @@
+
 var app = new Vue({
 	el:"#app",
 	data: {
@@ -9,6 +10,7 @@ var app = new Vue({
 		elementsTwoUrls: [],			
 		phrasesArray:[{phrase:'Hola a todos :D', style:1}, {phrase:'Pagina unica en el mundo', style:2} ,{phrase:'Esto es muy divertido!!', style:3}],
 		elementsThree: null,
+		apikey: 'IWiSMyNuZqK4ik2jzl3YedusT:gBmcbRAewZPHHJgfm1G9heF8v1uteKSBXtvP8BrPR5zS8Kqy80', // api de twitter
 	},
 
 	methods: {
@@ -21,11 +23,12 @@ var app = new Vue({
 		api2() {
 			this.showElements = false;
 			this.showElementsTwo = true;
-		}
+		},
 
 	},
 
 	created() {
+		var querystring = require('querystring');
 		this.showPhrase = this.phrasesArray[Math.floor(Math.random() * 3)]; // toma valores entre 0 y 1(exclusivo), luego multiplica por 3 y luego toma la parte entera 
 	},
 
@@ -42,7 +45,62 @@ var app = new Vue({
 					});
 				}
 
-			})
+			});
+
+/*		axios({																// api de twitter funcionando
+			method:'POST',
+			url: "https://cors-anywhere.herokuapp.com/https://api.twitter.com/oauth2/token",
+			headers: {
+					'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8',
+				    'Authorization':'Basic ' + btoa(this.apikey),
+				},
+			data: 'grant_type=client_credentials',
+			}).then(response => {
+				console.log(response);
+			});
+*/
+
+/*		axios({
+			method:'POST',
+			url: "https://discord.com/api/oauth2/token",
+			headers: {
+					'Content-Type':'application/x-www-form-urlencoded',
+				},
+			data: {
+				'grant_type':'authorization_code',
+				'client_id':'708817846741893220',
+    			'client_secret':'-gTAFSs3RuBBvPtSbHivPPovG5l25C68',
+    			'scope':'identify',
+    			'redirect_uri':'https://www.google.com',
+			},
+			}).then(response => {
+				console.log(response);
+			});
+*/
+/*			axios({
+			method:'POST',
+			url: "https://discord.com/api/oauth2/token",
+			headers: {
+					'Content-Type':'application/x-www-form-urlencoded',
+				},
+			data: 
+				'grant_type=authorization_code'+
+				'client_id:708817846741893220'+
+    			'client_secret:-gTAFSs3RuBBvPtSbHivPPovG5l25C68'+
+    			'scope:identify'+
+    			'redirect_uri:https://www.google.com'
+			
+			}).then(response => {
+				console.log(response);
+			});
+*/
+			axios({
+			method:'GET',
+			url: "",
+			}).then(response => {
+				console.log(response.data);
+			});
+
 
 
 
