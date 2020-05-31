@@ -43,7 +43,6 @@ var app = new Vue({
 		axios.get("https://discord.com/api/guilds/708920234945282118/widget.json")
 			.then(response => {
 				this.elementsThree = response.data;
-				console.log(response.data.members.length);
 			})
 	}
 })
