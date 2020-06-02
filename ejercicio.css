@@ -5,7 +5,7 @@
 
 a:hover {
 	cursor: pointer;
-	color:blue;
+	color:white;
 }
 
 .wrapper {
@@ -101,4 +101,13 @@ footer {
 
 table {
 	margin: 0 auto;
+}
+
+th {
+  background-color: #5F9EA0;
+  color: white;
+}
+
+tr:hover {
+	background-color: #F0F8FF;
 }

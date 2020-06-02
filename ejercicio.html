@@ -16,10 +16,10 @@
 		<aside>
 			<nav>
 				<div>
-					<a @click="api1()">Discord</a>
+					<a @click="api1()" :style="showElements ? 'color:blue' : 'color:black'">Discord</a>
 				</div>
 				<div>
-					<a @click="api2()">Unsplash</a>
+					<a @click="api2()" :style="showElementsTwo ? 'color:blue' : 'color:black'">Unsplash</a>
 				</div>
 			</nav>
 		</aside>
