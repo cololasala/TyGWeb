@@ -34,7 +34,7 @@ var app = new Vue({
 		axios.get("https://api.unsplash.com/users/8moments/photos/?client_id=-qqFujEaGsaptFY6f3YY3bHiEFvLJ3PtWfSUi39NH6Q")
 			.then(response => { 
 								this.userName = response.data[0].user.username;
-								for(var i = 5; i >= 0; i--) {
+								for(var i = 8; i >= 0; i--) {
 									this.elementsTwo.push(response.data[i].description);  
 									this.elementsTwoUrls.push(response.data[i].urls.raw);
 								}

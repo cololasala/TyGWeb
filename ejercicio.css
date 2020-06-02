@@ -8,10 +8,6 @@ a:hover {
 	color:blue;
 }
 
-a:visited {
-  color: green;
-}
-
 .wrapper {
 	width: 100%;
 	border: solid black;
